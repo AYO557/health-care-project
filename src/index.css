@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-darkgreen: var(--main-color);
+  --color-lightgreen: var(--secondary-color);
+  --color-darkgraygreen: var(--tertiary-color);
+  --color-lightgraygreen: var(--quaternary-color);
+  --color-justgreen: var(--quinary-color);
+}
+
+:root {
+  --main-color: #002508;
+  --secondary-color: #149230;
+  --tertiary-color: #00440f;
+  --quaternary-color: #037a1d;
+  --quinary-color: #006115;
+}
