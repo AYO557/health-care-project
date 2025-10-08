@@ -1,7 +1,15 @@
 import type { RouteObject } from "react-router";
 import AuthLayout from "../app/auth/pages/layout";
-import LoginPage from "../app/auth/pages/login";
-import SignupPage from "../app/auth/pages/signup";
+import { lazy } from "react";
+
+const LoginPage = lazy(() => import("../app/auth/pages/login"));
+const SignupPage = lazy(() => import("../app/auth/pages/signup"));
+const ForgotPasswordPage = lazy(
+  () => import("../app/auth/pages/forgot-password")
+);
+const ResetPasswordPage = lazy(
+  () => import("../app/auth/pages/reset-password")
+);
 
 const routes: RouteObject[] = [
   {
@@ -15,6 +23,14 @@ const routes: RouteObject[] = [
       {
         path: "signup",
         Component: SignupPage,
+      },
+      {
+        path: "forgot-password",
+        Component: ForgotPasswordPage,
+      },
+      {
+        path: "reset-password",
+        Component: ResetPasswordPage,
       },
     ],
   },
