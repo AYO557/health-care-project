@@ -3,6 +3,7 @@ import AuthHeader from "../components";
 import FormInput from "../../../components/ui/input";
 import Button from "../../../components/ui/button";
 import { Link } from "react-router";
+import { User } from "lucide-react";
 
 const SignupPage: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const SignupPage: React.FC = () => {
             type="text"
             id="name"
             placeholder="Enter your name"
+            icon={<User />}
           />
 
           <FormInput

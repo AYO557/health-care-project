@@ -1,7 +1,9 @@
 import type { RouteObject } from "react-router";
 import AuthLayout from "../app/auth/pages/layout";
 import { lazy } from "react";
+import ErrorPage from "../app/pages/error";
 
+//! auth
 const LoginPage = lazy(() => import("../app/auth/pages/login"));
 const SignupPage = lazy(() => import("../app/auth/pages/signup"));
 const ForgotPasswordPage = lazy(
@@ -11,10 +13,14 @@ const ResetPasswordPage = lazy(
   () => import("../app/auth/pages/reset-password")
 );
 
+//! app
+const NotFoundPage = lazy(() => import("../app/pages/not-found"));
+
 const routes: RouteObject[] = [
   {
     path: "auth",
     Component: AuthLayout,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "login",
@@ -33,6 +39,10 @@ const routes: RouteObject[] = [
         Component: ResetPasswordPage,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: NotFoundPage,
   },
 ];
 

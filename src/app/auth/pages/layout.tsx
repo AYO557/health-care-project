@@ -10,8 +10,8 @@ const AuthLayout = () => {
         </div>
       </section>
 
-      <section className="h-full lg:w-1/2 w-full bg-lightgreen/50 flex justify-center items-center">
-        <div className="w-full px-8 lg:w-1/2 lg:min-w-[400px] space-y-2">
+      <section className="h-full lg:w-1/2 w-full bg-lightgreen/50 flex justify-center items-center overflow-y-auto py-20">
+        <div className="w-full px-8 lg:w-1/2 lg:min-w-[400px] space-y-2 max-h-screen">
           <Outlet />
         </div>
       </section>

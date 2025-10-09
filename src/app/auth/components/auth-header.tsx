@@ -16,7 +16,7 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({
   const navigate = useNavigate();
 
   return (
-    <div className="flex gap-10 items-center h-full xl:px-20 py-10">
+    <div className="flex gap-4 items-center h-full xl:px-0 xl:py-10 px-4 py-6">
       {showBack && (
         <ArrowLeftCircle
           size={30}
