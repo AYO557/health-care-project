@@ -1,7 +1,7 @@
 import React from "react";
-import FormInput from "../../../components/ui/input";
+import FormInput from "@/components/ui/input";
 import AuthHeader from "../components";
-import Button from "../../../components/ui/button";
+import Button from "@/components/ui/button";
 import { Link } from "react-router";
 
 const LoginPage: React.FC = () => {
