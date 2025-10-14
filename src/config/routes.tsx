@@ -16,6 +16,10 @@ const ResetPasswordPage = lazy(
 //! app
 const NotFoundPage = lazy(() => import("../app/pages/not-found"));
 
+//! main
+const MainLayout = lazy(() => import("../app/main/layout"));
+const DashboardPage = lazy(() => import("../app/main/dashboard/page"));
+
 const routes: RouteObject[] = [
   {
     path: "auth",
@@ -37,6 +41,21 @@ const routes: RouteObject[] = [
       {
         path: "reset-password",
         Component: ResetPasswordPage,
+      },
+    ],
+  },
+  {
+    path: "/",
+    Component: MainLayout,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        Component: DashboardPage,
+      },
+      {
+        path: "dashboard",
+        Component: DashboardPage,
       },
     ],
   },
