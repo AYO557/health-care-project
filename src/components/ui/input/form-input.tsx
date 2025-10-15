@@ -25,7 +25,10 @@ const FormInput: React.FC<FormInputProps> = ({
   return (
     <div>
       {label && (
-        <label className="text-darkgreen text-sm font-bold" htmlFor={id}>
+        <label
+          className="text-darkgreen xl:text-lg text-sm font-bold"
+          htmlFor={id}
+        >
           {label}
         </label>
       )}
@@ -58,7 +61,7 @@ const FormInput: React.FC<FormInputProps> = ({
           )
         )}
       </div>
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="text-red-500 text-sm italic">{error}</p>}
     </div>
   );
 };
