@@ -2,6 +2,7 @@ import React from "react";
 import FormInput from "../../../components/ui/input";
 import AuthHeader from "../components";
 import Button from "../../../components/ui/button/button";
+import SearchInput from "../../../components/ui/Search/search";
 
 const LoginPage: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const LoginPage: React.FC = () => {
             id="password"
             placeholder="Enter your password"
           />
+          <SearchInput label="Search here..." />
         </div>
 
         <Button text="submit" />
