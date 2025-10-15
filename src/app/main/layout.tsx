@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./components/nav-bar";
 import Logo from "@/components/ui/logo";
 import { Logs } from "lucide-react";
+import { Outlet } from "react-router";
 
 const MainLayout: React.FC = () => {
   return (
@@ -17,7 +18,11 @@ const MainLayout: React.FC = () => {
         <NavBar />
       </div>
 
-      <main className="col-span-5 h-full overflow-y-auto"></main>
+      <main className="col-span-5 h-full overflow-y-auto 2xl:p-10 xl:p-8 lg:p-4">
+        <div className="h-full p-4 space-y-4">
+          <Outlet />
+        </div>
+      </main>
     </div>
   );
 };
