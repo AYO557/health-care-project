@@ -19,6 +19,16 @@ const NotFoundPage = lazy(() => import("../app/pages/not-found"));
 //! main
 const MainLayout = lazy(() => import("../app/main/layout"));
 const DashboardPage = lazy(() => import("../app/main/dashboard/page"));
+const SpecialistsPage = lazy(
+  () => import("../app/main/specialist/pages/specialists")
+);
+const MessagePage = lazy(() => import("../app/main/message/pages/messages"));
+const PharmacyPage = lazy(() => import("../app/main/pharmacy/pages/pharmacy"));
+const SettingsPage = lazy(() => import("../app/main/settings/pages/settings"));
+const AppointmentPage = lazy(
+  () => import("../app/main/appointment/pages/appointments")
+);
+const ReportsPage = lazy(() => import("../app/main/report/pages/reports"));
 
 const routes: RouteObject[] = [
   {
@@ -56,6 +66,30 @@ const routes: RouteObject[] = [
       {
         path: "dashboard",
         Component: DashboardPage,
+      },
+      {
+        path: "specialists",
+        Component: SpecialistsPage,
+      },
+      {
+        path: "appointments",
+        Component: AppointmentPage,
+      },
+      {
+        path: "messages",
+        Component: MessagePage,
+      },
+      {
+        path: "pharmacy",
+        Component: PharmacyPage,
+      },
+      {
+        path: "reports",
+        Component: ReportsPage,
+      },
+      {
+        path: "settings",
+        Component: SettingsPage,
       },
     ],
   },

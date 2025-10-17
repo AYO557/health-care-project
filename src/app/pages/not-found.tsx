@@ -10,7 +10,7 @@ const NotFound: React.FC = () => {
   }, 1000);
 
   if (count === 0) {
-    navigate("/auth/login");
+    navigate("/dashboard");
   }
 
   return (
