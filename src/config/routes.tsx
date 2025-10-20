@@ -20,7 +20,7 @@ const NotFoundPage = lazy(() => import("../app/pages/not-found"));
 const MainLayout = lazy(() => import("../app/main/layout"));
 const DashboardPage = lazy(() => import("../app/main/dashboard/page"));
 const SpecialistsPage = lazy(
-  () => import("../app/main/specialist/pages/specialists")
+  () => import("../app/main/specialist/pages/specialists-dashboard")
 );
 const MessagePage = lazy(() => import("../app/main/message/pages/messages"));
 const PharmacyPage = lazy(() => import("../app/main/pharmacy/pages/pharmacy"));
