@@ -20,7 +20,7 @@ const MainLayout: React.FC = () => {
       </div>
 
       <main className="col-span-5 h-full 2xl:p-10 xl:p-8 lg:p-4 overflow-auto">
-        <div className="h-full p-4 space-y-4">
+        <div className="h-full p-4 space-y-4 overflow-auto">
           <Outlet />
         </div>
       </main>

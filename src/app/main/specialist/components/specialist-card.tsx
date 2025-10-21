@@ -26,7 +26,9 @@ const SpecialistCard: React.FC<Specialist> = ({
             </p>
           </div>
 
-          <p className="text-sm font-medium text-darkgreen/80">{experience}</p>
+          <p className="text-sm font-medium text-darkgreen/80">
+            {experience} years
+          </p>
           <p className="text-xs text-darkgreen/60 italic leading-relaxed">
             {issues.join(", ")}
           </p>

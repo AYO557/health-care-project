@@ -1,7 +1,7 @@
 export interface BaseSpecialist {
   name: string;
   specialization: string;
-  experience: string;
+  experience: number;
   issues: string[];
   rating: number;
 }
