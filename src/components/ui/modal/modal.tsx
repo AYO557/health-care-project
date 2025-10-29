@@ -5,15 +5,29 @@ interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
   onClose: () => void;
+  isDismissable?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ title, children, isOpen, onClose }) => {
+const Modal: React.FC<ModalProps> = ({
+  title,
+  children,
+  isOpen,
+  onClose,
+  isDismissable = true,
+}) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 h-screen flex items-center justify-center">
       {/* overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div
+        onClick={() => {
+          if (isDismissable) {
+            onClose();
+          }
+        }}
+        className="absolute inset-0 bg-black/50"
+      ></div>
 
       {/* modal content */}
       <div className="relative bg-white p-8 rounded-lg shadow-lg z-10">

@@ -9,6 +9,7 @@ interface FormInputProps {
   placeholder?: string;
   error?: string;
   icon?: React.ReactNode;
+  onChange: (val: string) => void;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -18,6 +19,7 @@ const FormInput: React.FC<FormInputProps> = ({
   id,
   error,
   icon,
+  onChange,
   ...props
 }) => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -47,6 +49,7 @@ const FormInput: React.FC<FormInputProps> = ({
           type={type === "password" && showPassword ? "text" : type}
           name={name || id}
           id={id}
+          onChange={(e) => onChange(e.target.value)}
           {...props}
         />
 

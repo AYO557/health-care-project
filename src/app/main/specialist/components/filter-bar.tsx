@@ -5,9 +5,13 @@ import React from "react";
 
 interface FilterBarProps {
   setFilterModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onSearch?: (value: string) => void;
 }
 
-const FilterBar: React.FC<FilterBarProps> = ({ setFilterModalOpen }) => {
+const FilterBar: React.FC<FilterBarProps> = ({
+  setFilterModalOpen,
+  onSearch,
+}) => {
   return (
     <section className="h-20 py-2 px-4 bg-white/20 rounded-xl flex items-end justify-between">
       <div className="w-fit flex xl:gap-4 sm:gap-2 gap-1">
@@ -26,6 +30,9 @@ const FilterBar: React.FC<FilterBarProps> = ({ setFilterModalOpen }) => {
           placeholder="Search for a specialist..."
           id="search"
           icon={<Search size={20} />}
+          onChange={(value) => {
+            onSearch?.(value);
+          }}
         />
       </div>
     </section>

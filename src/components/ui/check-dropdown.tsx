@@ -1,23 +1,32 @@
 import { Check, ChevronDown } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 
 type Option = {
-  value: string;
+  value: string | number | boolean;
   label: string;
 };
 
 interface CheckDropdownProps {
   options: Option[];
   label: string;
+  onSelect?: (options: Option["value"][]) => void;
 }
 
-const CheckDropdown: React.FC<CheckDropdownProps> = ({ options, label }) => {
+const CheckDropdown: React.FC<CheckDropdownProps> = ({
+  options,
+  label,
+  onSelect,
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedOptions, setSelectedOptions] = React.useState<Option[]>([]);
 
+  useEffect(() => {
+    // close dropdown when clicked outside
+    document.body.addEventListener("click", () => setIsOpen(false));
+  }, []);
+
   // add or remove option from selected options
   const handleOptionClick = (option: Option) => {
-    console.log(option);
     setSelectedOptions((prevSelectedOptions) => {
       // check if option is already selected
       if (prevSelectedOptions.includes(option)) {
@@ -32,12 +41,19 @@ const CheckDropdown: React.FC<CheckDropdownProps> = ({ options, label }) => {
     });
   };
 
+  useEffect(() => {
+    onSelect?.(selectedOptions.map((o) => o.value));
+  }, [selectedOptions]);
+
   return (
-    <div className="relative border-2 border-darkgreen/40 bg-darkgreen/10 rounded-xl px-4 p-2 cursor-pointer">
-      <label
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center font-medium"
-      >
+    <div
+      onClick={(e) => {
+        e.stopPropagation();
+        setIsOpen(!isOpen);
+      }}
+      className="relative border-2 border-darkgreen/40 bg-darkgreen/10 rounded-xl px-4 p-2 cursor-pointer"
+    >
+      <label className="flex justify-between items-center font-medium">
         <span>{label}</span>
 
         <ChevronDown
@@ -50,14 +66,14 @@ const CheckDropdown: React.FC<CheckDropdownProps> = ({ options, label }) => {
 
       {/* dropdown */}
       <ul
-        className={`absolute top-full border-2 border-darkgreen/40 bg-white w-full left-0 mt-2 rounded-lg transition-all duration-300 ${
+        className={`absolute z-10 top-full border-2 border-darkgreen/40 bg-white w-full left-0 mt-2 rounded-lg transition-all duration-300 ${
           isOpen ? "block" : "hidden"
         }`}
       >
         {options.map((option) => (
           <li
             onClick={() => handleOptionClick(option)}
-            key={option.value}
+            key={option.label}
             className="flex items-center gap-2 p-1 px-2 hover:bg-darkgreen/10"
           >
             <Check

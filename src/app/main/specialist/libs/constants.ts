@@ -122,3 +122,78 @@ export const specialists: Specialist[] = [
     rating: 4.2,
   },
 ];
+
+export const specialties = [
+  {
+    label: "Cardiologist",
+    value: "cardiologist",
+  },
+  {
+    label: "Dermatologist",
+    value: "dermatologist",
+  },
+  {
+    label: "Endocrinologist",
+    value: "endocrinologist",
+  },
+];
+
+export const locations = [
+  {
+    label: "Nigeria",
+    value: "nigeria",
+  },
+  {
+    label: "Ghana",
+    value: "ghana",
+  },
+  {
+    label: "Kenya",
+    value: "kenya",
+  },
+];
+
+export const issues = [
+  {
+    label: "Heart Attack",
+    value: "heart-attack",
+  },
+  {
+    label: "Stroke",
+    value: "stroke",
+  },
+  {
+    label: "Hypertension",
+    value: "hypertension",
+  },
+];
+
+export const ratings = [
+  {
+    label: "4.5",
+    value: 4.5,
+  },
+  {
+    label: "4.8",
+    value: 4.8,
+  },
+  {
+    label: "4.2",
+    value: 4.2,
+  },
+];
+
+export const experiences = [
+  {
+    label: "10",
+    value: 10,
+  },
+  {
+    label: "15",
+    value: 15,
+  },
+  {
+    label: "8",
+    value: 8,
+  },
+];
