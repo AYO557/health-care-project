@@ -15,12 +15,12 @@ const SpecialistsPage: React.FC = () => {
   const [searchedSpecialists, setSearchedSpecialists] = React.useState<
     typeof specialists
   >([]);
-  const [filteredSpecialists, setFilteredSpecialists] = React.useState<
-    typeof specialists
-  >([]);
+  const [filteredSpecialists, setFilteredSpecialists] =
+    React.useState<typeof specialists>(specialists);
 
   const handleApplyFilter = (selectedFilters: SpecialistsFilter) => {
-    console.log("filter applied!:", selectedFilters);
+    console.log("selectedFilters: ", selectedFilters);
+    setFilterModalOpen(false);
   };
 
   const handleSpecilistsSearch = (searchQuery: string) => {
