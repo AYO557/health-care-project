@@ -5,11 +5,20 @@ import Button from "@/components/ui/button";
 import { Link } from "react-router";
 
 const LoginPage: React.FC = () => {
+  const [loginData, setLoginData] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <AuthHeader title="Welcome Back" desc="Please sign in to continue" />
 
-      <form className="space-y-10">
+      <form onSubmit={handleLoginSubmit} className="space-y-10">
         <div>
           <div className="space-y-4">
             <FormInput

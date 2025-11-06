@@ -11,10 +11,18 @@ export interface LoginPayload {
   password: string;
 }
 
-export interface ApiResponse<T> {
-  success: boolean;
-  message: string;
-  data: T;
-  error: string | null;
-  meta: Record<string, unknown>;
+export interface SignupForm {
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  confirmPassword: string;
+}
+
+export interface SignupError {
+  name?: string;
+  email?: string;
+  phone?: string;
+  password?: string;
+  confirmPassword?: string;
 }

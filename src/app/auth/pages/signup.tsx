@@ -4,27 +4,25 @@ import FormInput from "../../../components/ui/input";
 import Button from "../../../components/ui/button";
 import { Link, useNavigate } from "react-router";
 import { User } from "lucide-react";
-import type { ApiResponse, SignupPayload } from "../libs/types";
+import type { SignupForm, SignupError, SignupPayload } from "../libs/types";
 import { toast, Toaster } from "sonner";
-
-interface SignupForm {
-  name: string;
-  email: string;
-  password: string;
-  phone: string;
-  confirmPassword: string;
-}
-
-interface SignupError {
-  name?: string;
-  email?: string;
-  phone?: string;
-  password?: string;
-  confirmPassword?: string;
-}
+import useSignupApi from "../api/useSignup";
 
 const SignupPage: React.FC = () => {
   const navigate = useNavigate();
+  const { signUserup } = useSignupApi({
+    onSuccess: (response) => {
+      toast.success(response.message || "User created successfully");
+      navigate("/auth/login");
+    },
+    onError: (error) => {
+      toast.error(
+        (error as { error: string })?.error ||
+          (error as { message: string })?.message ||
+          "Something went wrong"
+      );
+    },
+  });
 
   const [signupData, setSignupData] = useState<SignupForm>({
     name: "",
@@ -118,42 +116,8 @@ const SignupPage: React.FC = () => {
     };
 
     setLoading(true);
-    await signupApi(payload);
+    await signUserup(payload);
     setLoading(false);
-  };
-
-  const apiUrl = "http://localhost:5000/api/v1/users";
-  const signupApi = async (payload: SignupPayload) => {
-    try {
-      const response: Response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        const err = await response.json();
-        throw err;
-      }
-
-      const data: ApiResponse<SignupPayload> = await response.json();
-
-      if (data.success) {
-        toast.success(data.message);
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error(
-        (error as ApiResponse<SignupPayload>)?.error || "Something went wrong"
-      );
-    }
   };
 
   return (
