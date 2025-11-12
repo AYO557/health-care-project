@@ -6,8 +6,8 @@ export interface ApiResponse<T> {
   meta: Record<string, unknown>;
 }
 
-export interface ApiProps<T> {
-  onMutate?: (data: T) => void;
+export interface ApiProps<T, P> {
+  onMutate?: (data: P) => void;
   onSuccess?: (res: ApiResponse<T>) => void;
   onError?: (error: unknown) => void;
 }

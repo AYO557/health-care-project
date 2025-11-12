@@ -1,20 +1,23 @@
 import type { ApiProps } from "@/libs/types";
-import type { LoginPayload } from "../libs/types";
+import type { LoginPayload, SignupResponse } from "../libs/types";
+import loginService from "../services/loginUser";
 
 export default function useLoginApi({
   onMutate,
   onSuccess,
   onError,
-}: ApiProps<LoginPayload> = {}) {
+}: ApiProps<SignupResponse, LoginPayload> = {}) {
   const login = async (payload: LoginPayload) => {
     try {
       onMutate?.(payload);
-      const response = await logUserService(payload);
+      const response = await loginService(payload);
       onSuccess?.(response);
     } catch (error) {
       onError?.(error);
     }
   };
 
-  return {};
+  return {
+    login,
+  };
 }

@@ -1,7 +1,9 @@
 import React from "react";
 import type { Specialist } from "../libs/types";
+import { Link } from "react-router";
 
 const SpecialistCard: React.FC<Specialist> = ({
+  id,
   name,
   specialization,
   experience,
@@ -9,7 +11,10 @@ const SpecialistCard: React.FC<Specialist> = ({
   rating,
 }) => {
   return (
-    <div className="min-h-64 w-full rounded-2xl bg-white/70 shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 p-4 pb-7 border border-lightgraygreen/20">
+    <Link
+      to={`/specialists/${id}`}
+      className="min-h-64 w-full rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 space-y-4 p-4 pb-7 border border-lightgraygreen/20"
+    >
       {/* Header Section */}
       <div className="h-[60%] flex gap-4">
         <div className="w-16 h-16 flex-shrink-0 flex justify-center items-center">
@@ -63,12 +68,15 @@ const SpecialistCard: React.FC<Specialist> = ({
             </span>
           </div>
 
-          <button className="bg-gradient-to-r from-darkgreen to-lightgreen hover:from-darkgraygreen hover:to-quaternary-color text-white text-sm font-medium h-9 px-6 rounded-xl transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer">
+          <button
+            onClick={(e) => e.preventDefault()}
+            className="bg-gradient-to-r from-darkgreen to-lightgreen hover:from-darkgraygreen hover:to-quaternary-color text-white text-sm font-medium h-9 px-6 rounded-xl transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
+          >
             Book Now
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

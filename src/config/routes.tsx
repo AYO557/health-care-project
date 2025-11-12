@@ -22,6 +22,9 @@ const DashboardPage = lazy(() => import("../app/main/dashboard/page"));
 const SpecialistsPage = lazy(
   () => import("../app/main/specialist/pages/specialists-dashboard")
 );
+const SpecialistProfilePage = lazy(
+  () => import("../app/main/specialist/pages/specialist-profile")
+);
 const MessagePage = lazy(() => import("../app/main/message/pages/messages"));
 const PharmacyPage = lazy(() => import("../app/main/pharmacy/pages/pharmacy"));
 const SettingsPage = lazy(() => import("../app/main/settings/pages/settings"));
@@ -69,7 +72,16 @@ const routes: RouteObject[] = [
       },
       {
         path: "specialists",
-        Component: SpecialistsPage,
+        children: [
+          {
+            path: "",
+            Component: SpecialistsPage,
+          },
+          {
+            path: ":profileId",
+            Component: SpecialistProfilePage,
+          },
+        ],
       },
       {
         path: "appointments",

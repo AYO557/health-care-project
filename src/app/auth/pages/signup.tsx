@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AuthHeader from "../components";
 import FormInput from "../../../components/ui/input";
 import Button from "../../../components/ui/button";
@@ -7,13 +7,21 @@ import { User } from "lucide-react";
 import type { SignupForm, SignupError, SignupPayload } from "../libs/types";
 import { toast, Toaster } from "sonner";
 import useSignupApi from "../api/useSignup";
+import { AuthContext } from "../store/auth";
 
 const SignupPage: React.FC = () => {
+  const { login } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const { signUserup } = useSignupApi({
     onSuccess: (response) => {
       toast.success(response.message || "User created successfully");
-      navigate("/auth/login");
+
+      login(response.data.user, response.data.token);
+
+      setTimeout(() => {
+        navigate("/auth/login");
+      }, 2000);
     },
     onError: (error) => {
       toast.error(

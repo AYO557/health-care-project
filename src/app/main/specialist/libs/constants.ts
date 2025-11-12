@@ -1,4 +1,4 @@
-import type { Specialist } from "./types";
+import type { Specialist, SpecialistProfile } from "./types";
 
 export const specialists: Specialist[] = [
   {
@@ -122,6 +122,41 @@ export const specialists: Specialist[] = [
     rating: 4.2,
   },
 ];
+
+export const specialist: SpecialistProfile = {
+  name: "John Doe",
+  specialization: "Cardiologist",
+  experience: 10,
+  issues: [
+    "Heart Attack",
+    "Stroke",
+    "Hypertension",
+    "Arrhythmia",
+    "Heart Failure",
+  ],
+  rating: 4.5,
+  reviews: 127,
+  location: "New York Medical Center",
+  education: [
+    "MD - Harvard Medical School",
+    "Board Certified in Cardiology",
+    "PhD in Cardiovascular Research",
+  ],
+  certifications: [
+    "American Board of Internal Medicine",
+    "Advanced Cardiac Life Support",
+    "Cardiovascular Disease Certification",
+  ],
+  languages: ["English", "Spanish", "French"],
+  availability: ["Mon-Fri: 9:00 AM - 5:00 PM", "Sat: 10:00 AM - 2:00 PM"],
+  consultationFee: 200,
+  about:
+    "Dr. John Doe is a renowned cardiologist with over 10 years of experience in treating complex cardiovascular conditions. He specializes in interventional cardiology and has published numerous research papers in medical journals.",
+  contact: {
+    phone: "+1 (555) 123-4567",
+    email: "john.doe@medicalcenter.com",
+  },
+};
 
 export const specialties = [
   {

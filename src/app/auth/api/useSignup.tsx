@@ -1,4 +1,4 @@
-import type { SignupPayload } from "../libs/types";
+import type { SignupPayload, SignupResponse } from "../libs/types";
 import createUser from "../services/createUser";
 import type { ApiProps } from "@/libs/types";
 
@@ -6,7 +6,7 @@ export default function useSignupApi({
   onMutate,
   onSuccess,
   onError,
-}: ApiProps<SignupPayload> = {}) {
+}: ApiProps<SignupResponse, SignupPayload> = {}) {
   const signUserup = async (payload: SignupPayload) => {
     try {
       onMutate?.(payload);

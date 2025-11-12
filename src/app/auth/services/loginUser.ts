@@ -1,5 +1,5 @@
 import type { ApiResponse } from "@/libs/types";
-import type { LoginPayload } from "../libs/types";
+import type { LoginPayload, SignupResponse } from "../libs/types";
 import { apiUrl } from "@/libs/constants";
 
 const loginService = async (payload: LoginPayload) => {
@@ -12,7 +12,7 @@ const loginService = async (payload: LoginPayload) => {
   });
 
   // convert the response (promise) to json
-  const data: ApiResponse<LoginPayload> = await response.json();
+  const data: ApiResponse<SignupResponse> = await response.json();
 
   if (!response.ok) {
     throw new Error(data?.error || data?.message || "Something went wrong");

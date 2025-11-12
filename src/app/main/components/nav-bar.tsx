@@ -1,15 +1,19 @@
+import { AuthContext } from "@/app/auth/store/auth";
 import Logo from "@/components/ui/logo";
 import {
   Calendar,
   ClipboardPlus,
   Home,
+  LogOut,
   Mails,
   Settings2,
   Store,
   User,
 } from "lucide-react";
-import React from "react";
-import { NavLink } from "react-router";
+import React, { useContext } from "react";
+import { NavLink, useNavigate } from "react-router";
+import LogoutModal from "./logout-modal";
+import useToastMessage from "@/hooks/useToastMessage";
 
 const navItems = [
   {
@@ -50,6 +54,18 @@ const navItems = [
 ];
 
 const NavBar: React.FC = () => {
+  const navigate = useNavigate();
+  const { toastSuccess } = useToastMessage();
+  const { logout } = useContext(AuthContext);
+  const [isLogoutModalOpen, setLogoutModalOpen] = React.useState(false);
+
+  const handleLogout = () => {
+    toastSuccess("Logout successful");
+
+    logout();
+    navigate("/auth/login");
+  };
+
   return (
     <nav className="h-full xl:rounded-3xl lg:rounded-xl bg-darkgreen text-white flex justify-between flex-col items-center xl:py-5 py-2 xl:px-4 px-2">
       <div className="p-4 w-full">
@@ -73,7 +89,21 @@ const NavBar: React.FC = () => {
         ))}
       </menu>
 
-      <div className="2xl:h-40 lg:h-24 bg-darkgraygreen w-full rounded-2xl"></div>
+      <div className="2xl:h-40 lg:h-24 bg-darkgraygreen w-full rounded-2xl flex items-end p-2">
+        <button
+          className="flex gap-2 p-4 bg-darkgreen rounded-xl w-full hover:text-red-400 font-bold cursor-pointer"
+          onClick={() => setLogoutModalOpen(true)}
+        >
+          <LogOut className="2xl:size-6 lg:size-4 sm:size-8" />
+          <span>Log Out</span>
+        </button>
+      </div>
+
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setLogoutModalOpen(false)}
+        onLogout={handleLogout}
+      />
     </nav>
   );
 };

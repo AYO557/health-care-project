@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavBar from "./components/nav-bar";
 import Logo from "@/components/ui/logo";
 import { Logs } from "lucide-react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
+import LoadingPage from "../pages/loading";
+import { AuthContext } from "../auth/store/auth";
 
 const MainLayout: React.FC = () => {
+  const navigate = useNavigate();
+
+  const { isAuthenticated } = useContext(AuthContext);
+
+  React.useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/auth/login");
+    }
+  }, [isAuthenticated, navigate]);
+
+  if (!isAuthenticated) {
+    return <LoadingPage />;
+  }
+
   return (
     <div className="relative sm:grid grid-cols-6 bg-darkgraygreen/50 h-screen sm:h-auto md:h-screen">
       {/* Mobile */}
